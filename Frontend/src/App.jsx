@@ -9,6 +9,7 @@ import EditTeacher from './Admin/Pages/EditTeacher'
 import TeacherDetails from './Admin/Pages/TeacherDetails'
 
 
+
 function App() {
   return (
     <>

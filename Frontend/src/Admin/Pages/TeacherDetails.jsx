@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import { AdminSidebar } from "../Components/AdminSidebar";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -18,7 +17,7 @@ export default function TeacherDetails() {
     try {
 
       const res = await axios.get(
-        `https://teacher-2-wbvk.onrender.com/teacher/${id}`
+        `https://teacher-2-wbvk.onrender.com/viewteacher/${id}`
       );
 
       console.log(res.data);
@@ -42,17 +41,11 @@ export default function TeacherDetails() {
   if (!teacher) {
 
     return (
-      <div className="flex min-h-screen bg-gray-100">
+      <div className="flex min-h-screen bg-gray-100 items-center justify-center">
 
-        <AdminSidebar />
-
-        <div className="flex-1 flex items-center justify-center">
-
-          <h1 className="text-2xl font-bold">
-            Loading...
-          </h1>
-
-        </div>
+        <h1 className="text-2xl font-bold">
+          Loading...
+        </h1>
 
       </div>
     );
@@ -60,58 +53,59 @@ export default function TeacherDetails() {
 
   return (
 
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-10">
 
-      <AdminSidebar />
+      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-2xl">
 
-      <div className="flex-1 p-10">
+        <h1 className="text-4xl font-bold mb-8 text-center">
+          Teacher Details
+        </h1>
 
-        <div className="bg-white p-8 rounded-2xl shadow-xl">
+        <div className="space-y-4 text-lg">
 
-          <h1 className="text-4xl font-bold mb-8">
-            Teacher Details
-          </h1>
+          <p>
+            <span className="font-semibold">Name:</span>
+            {teacher.name}
+          </p>
 
-          <div className="space-y-4 text-lg">
+          <p>
+            <span className="font-semibold">Address:</span>
+            {teacher.address}
+          </p>
 
-            <p>
-              <span className="font-semibold">Name:</span>
-              {teacher.name}
-            </p>
+          <p>
+            <span className="font-semibold">Subject:</span>
+            {teacher.sub}
+          </p>
 
-            <p>
-              <span className="font-semibold">Address:</span>
-              {teacher.address}
-            </p>
+          <p>
+            <span className="font-semibold">Qualification:</span>
+            {teacher.qualification}
+          </p>
 
-            <p>
-              <span className="font-semibold">Subject:</span>
-              {teacher.sub}
-            </p>
+          <p>
+            <span className="font-semibold">DOB:</span>
 
-            <p>
-              <span className="font-semibold">Qualification:</span>
-              {teacher.qualification}
-            </p>
-
-            <p>
-              <span className="font-semibold">DOB:</span>
-
-              {teacher.dob
-                ? new Date(teacher.dob).toLocaleDateString("en-GB")
-                : "-"}
-            </p>
-
-          </div>
-
-          <button
-            onClick={() => navigate("/allteachers")}
-            className="mt-8 bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-800"
-          >
-            Back
-          </button>
+            {teacher.dob
+              ? new Date(teacher.dob).toLocaleDateString("en-GB")
+              : "-"}
+          </p>
 
         </div>
+
+        <button
+          onClick={() => navigate("/allteachers")}
+          className="mt-8 bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-800"
+        >
+          Back
+        </button>
+
+         <button
+          onClick={() => navigate("/")}
+          className="mt-8 bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-800"
+        >
+         Home
+        </button>
 
       </div>
 
