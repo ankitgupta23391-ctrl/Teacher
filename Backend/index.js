@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 const connectDB = async () => {
   try {
 
-    await mongoose.connect("mongodb://localhost:27017/newTeacher");
+    await mongoose.connect("mongodb+srv://ankitgupta23391_db_user:hQukLuvUH7velqJZ@cluster0.kihvb0j.mongodb.net/newTeacher");
 
     console.log("MongoDB Connected Successfully...............");
 
