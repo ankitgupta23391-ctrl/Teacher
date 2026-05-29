@@ -234,6 +234,38 @@ app.delete("/deleteteacher/:id", async (req, res) => {
 });
 
 
+
+app.get("/viewteacher/:id", async (req, res) => {
+
+  try {
+
+    const teacher = await TeacherModel.findById(req.params.id);
+
+    if (!teacher) {
+
+      return res.status(404).json({
+        success: false,
+        message: "Teacher not found",
+      });
+
+    }
+
+    res.status(200).json({
+      success: true,
+      data: teacher,
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+
+  }
+
+});
+
 // ======================
 // Server Start
 // ======================

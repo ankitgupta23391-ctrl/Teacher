@@ -28,3 +28,8 @@ export const getSingleTeacher = async (id) => {
 export const updateTeacher = async (id, data) => {
   return await axios.patch(`https://teacher-2-wbvk.onrender.com/updateteacher/${id}`, data);
 };
+
+export const viewTeacher = async (id, data) => {
+  return await axios.get(`https://teacher-2-wbvk.onrender.com/teacher/${id}`, data);
+};
+
