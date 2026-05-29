@@ -14,7 +14,7 @@ export default function TeacherDetails() {
   const loadTeacher = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/singleteacher/${id}`
+        `https://teacher-2-wbvk.onrender.com/${id}`
       );
 
       setTeacher(res.data.data);
